@@ -26,6 +26,9 @@ public class PropertyGUI2 extends JFrame
     private JLabel totalTaxesLabel;
     private JTextField totalTaxesField;
 	
+	private JLabel clickWhenDoneLabel;
+	private JButton finishButton;
+	
 	public PropertyGUI2(String owners[])
 	{
 		super( "Property Input Screen" );
@@ -47,6 +50,7 @@ public class PropertyGUI2 extends JFrame
         buttonPanel = new JPanel();
         buttonPanel.add(yesRadioButton);
         buttonPanel.add(noRadioButton);
+		//TODO: change button layout, they dont look exactly like in the picture
 		
 		totalExemptionsLabel = new JLabel("    Total Exemptions");
         totalExemptionsField = new JTextField(15);
@@ -55,6 +59,9 @@ public class PropertyGUI2 extends JFrame
         totalTaxesLabel = new JLabel("    Total Taxes");
         totalTaxesField = new JTextField(15);
 		totalTaxesField.setEditable(false);
+		
+		clickWhenDoneLabel = new JLabel("    Click When Done");
+        finishButton = new JButton("   FINISH");
 		
 		add(selectOwnerLabel);
         add(ownerListBox);
@@ -66,6 +73,8 @@ public class PropertyGUI2 extends JFrame
         add(totalExemptionsField);
         add(totalTaxesLabel);
         add(totalTaxesField);
+		add(clickWhenDoneLabel);
+		add(finishButton);
 	}
 	
 	public static void main(String[] args)
