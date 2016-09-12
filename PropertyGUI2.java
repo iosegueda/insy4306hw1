@@ -4,6 +4,7 @@ import java.awt.*;
 import java.util.*;
 import java.awt.event.*;
 import javax.swing.event.*;
+import java.io.*;
 
 
 public class PropertyGUI2 extends JFrame 
@@ -88,7 +89,31 @@ public class PropertyGUI2 extends JFrame
 	
 	public static void main(String[] args)
     {
-		String owners[] = {"NONE", "Jones", "Smith", "Wills"};
+		/* 
+		-initialize owners, done
+		-initialize reader 
+		-then read 
+		*/
+		String owners[] = {"NONE"};
+		String line;
+		try
+		{
+			BufferedReader reader = new BufferedReader(new FileReader("properties.txt"));
+			
+			while((line = reader.readLine()) != null)
+			{
+				System.out.println(line);
+			}
+		}
+		catch ( IOException ioe )
+        {
+            System.out.println( ioe );
+        }
+        catch ( Exception e )
+        {
+            e.printStackTrace();
+		}
+		
 		
 		PropertyGUI2 demo = new PropertyGUI2(owners);
 
