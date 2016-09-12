@@ -95,7 +95,10 @@ public class PropertyGUI2 extends JFrame
 		-then read 
 		*/
 		String owners[] = {"NONE"};
+		String properties [];
+		String property[] = {};
 		String line;
+		
 		try
 		{
 			BufferedReader reader = new BufferedReader(new FileReader("properties.txt"));
@@ -103,6 +106,8 @@ public class PropertyGUI2 extends JFrame
 			while((line = reader.readLine()) != null)
 			{
 				System.out.println(line);
+				property = line.split(";");
+				//System.out.println(property[1]);
 			}
 		}
 		catch ( IOException ioe )
