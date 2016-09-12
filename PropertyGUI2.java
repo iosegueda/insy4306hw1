@@ -62,6 +62,15 @@ public class PropertyGUI2 extends JFrame
 		
 		clickWhenDoneLabel = new JLabel("    Click When Done");
         finishButton = new JButton("   FINISH");
+		finishButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent ae)
+			{
+				System.exit(0);
+			}
+		}
+		);
+		
 		
 		add(selectOwnerLabel);
         add(ownerListBox);
