@@ -4,7 +4,7 @@ public class WriteFile
 {
 	public static void main (String [] args) 
 	{
-		File file = new File ("OwnerList.txt");
+		File file = new File ("properties.txt");
 		
 		try
 		{ 
