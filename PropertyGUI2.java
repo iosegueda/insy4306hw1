@@ -11,6 +11,9 @@ public class PropertyGUI2 extends JFrame
 	private JLabel selectOwnerLabel;
 	private JComboBox<String> ownerListBox;
 	
+	private JLabel totalMarketValueLabel;
+    private JTextField totalMarketValueField;
+	
 	public PropertyGUI2(String owners[])
 	{
 		super( "Property Input Screen" );
@@ -19,9 +22,14 @@ public class PropertyGUI2 extends JFrame
 		selectOwnerLabel = new JLabel("    Select an Owner");
         ownerListBox = new JComboBox<String>(owners);
 		
+		totalMarketValueLabel = new JLabel("    Total Market Value");
+        totalMarketValueField = new JTextField(15);
+		totalMarketValueField.setEditable(false);
+		
 		add(selectOwnerLabel);
         add(ownerListBox);
-		
+		add(totalMarketValueLabel);
+		add(totalMarketValueField);
 	}
 	
 	public static void main(String[] args)
