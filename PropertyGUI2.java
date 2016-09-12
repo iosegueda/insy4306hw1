@@ -33,8 +33,7 @@ public class PropertyGUI2 extends JFrame
         demo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         demo.setSize(500, 300);
         demo.setVisible(true);
-        demo.setLocationRelativeTo(null);
-		
+        demo.setLocationRelativeTo(null);	
 
     }
 	
