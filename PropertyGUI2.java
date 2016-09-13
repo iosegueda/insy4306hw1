@@ -30,7 +30,7 @@ public class PropertyGUI2 extends JFrame
     private JLabel clickWhenDoneLabel;
     private JButton finishButton;
     
-    public PropertyGUI2(String[] owners)
+    public PropertyGUI2(String[] owners, java.util.List<Owner> propertyList)
     {
         super( "Property Input Screen" );
         setLayout(new GridLayout(6,2));
@@ -45,7 +45,15 @@ public class PropertyGUI2 extends JFrame
                 {
                     Object item = event.getItem();
                     System.out.println(item.toString());
-                    // do something with object
+                    int pos = getOwnerPos(propertyList, item.toString());
+
+                    totalMarketValueField.setText(Double.toString(propertyList.get(pos).getPropertyList().get(0).getMarketValue()));
+
+                    if(propertyList.get(pos).getPropertyList().get(0) instanceof ResidentialProperty)
+                    {
+                        System.out.println(((ResidentialProperty)propertyList.get(pos).getPropertyList().get(0)).getExemption());
+                    }
+
                 }
             }
         }
@@ -175,10 +183,10 @@ public class PropertyGUI2 extends JFrame
         }
 
 
-        String[] simpleArray = new String[ ownerNames.size() ];
-        ownerNames.toArray( simpleArray );
+        String[] nameArray = new String[ ownerNames.size() ];
+        ownerNames.toArray( nameArray );
         
-        PropertyGUI2 demo = new PropertyGUI2(simpleArray);
+        PropertyGUI2 demo = new PropertyGUI2(nameArray, owners);
 
         demo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         demo.setLocationRelativeTo(null);
