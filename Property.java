@@ -52,7 +52,11 @@ public abstract class Property
 	}
 	public String toString()
 	{
-		String str = this.propertyAddress.toString() + "\n" + Double.toString(this.marketValue) + "\n" + Integer.toString(this.squareFeet) + "\nFlood zone: " + Boolean.toString(this.floodZone) + "\n";
+		String str = this.propertyAddress.toString() + 
+					"Market Value: " + Double.toString(this.marketValue) + 
+					"\nSqFt: " + Integer.toString(this.squareFeet) + 
+					"\nFlood zone: " + Boolean.toString(this.floodZone) + 
+					"\n";
 		return str;
 	}
 	public double calculateTaxes()

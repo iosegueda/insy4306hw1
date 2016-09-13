@@ -39,7 +39,7 @@ public class CommercialProperty extends Property
 	}
 	public String toString()
 	{
-		String str = super.toString() + "\n" + businessName + "\n" + stateCode;
+		String str = super.toString() + "Business Name: " + businessName + "\nState Code: " + stateCode;
 		return str;
 	}
 	public double calculateTaxes()

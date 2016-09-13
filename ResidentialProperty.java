@@ -38,7 +38,7 @@ public class ResidentialProperty extends Property implements Exemption
 	}
 	public String toString()
 	{
-		String str = super.toString() + "\n" + subdivision + "\n" + Double.toString(exemption);
+		String str = super.toString() + "Subdivision: " + subdivision + "\nExemption: " + Double.toString(exemption);
 		return str;
 	}
 	public double calculateTaxes()
