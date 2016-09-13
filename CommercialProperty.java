@@ -44,6 +44,15 @@ public class CommercialProperty extends Property
 	}
 	public double calculateTaxes()
 	{
-		return 0.0;
+		double taxes = 0.0;
+		if(super.getSquareFeet() > 1500)
+		{
+			taxes = ( this.getStateCode().equals("TX") ) ? this.getMarketValue() * 0.25 : this.getMarketValue() * 0.2;
+		}
+		else
+		{
+			taxes = this.getMarketValue() * 0.10;
+		}
+		return taxes;
 	}
 }

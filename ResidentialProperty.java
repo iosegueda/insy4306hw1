@@ -43,10 +43,15 @@ public class ResidentialProperty extends Property implements Exemption
 	}
 	public double calculateTaxes()
 	{
-		return 0.0;
+		double taxes = super.getMarketValue() * 0.5;
+		if(!super.getFloodZone())
+		{
+			return(taxes);
+		}
+		return(taxes * 1.1);
 	}
 	public double calculateExemption()
 	{
-		return 0.0;
+		return ( super.getMarketValue() * (COUNTY + CITY + SCHOOL + MEDICAL) );
 	}
 }
