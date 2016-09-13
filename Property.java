@@ -34,25 +34,26 @@ public abstract class Property
 	{
 		return this.floodZone;
 	}
-	public Void setPropertyAddress(Address a)
+	public void setPropertyAddress(Address a)
 	{
 		this.propertyAddress = a;
 	}
-	public Void setMarketValue(double v)
+	public void setMarketValue(double v)
 	{
 		this.marketValue = v;
 	}
-	public Void setSquareFeet(int f)
+	public void setSquareFeet(int f)
 	{
 		this.squareFeet = f;
 	}
-	public Void setFloodZone(boolean z)
+	public void setFloodZone(boolean z)
 	{
 		this.floodZone = z;
 	}
 	public String toString()
 	{
-		return "";
+		String str = this.propertyAddress.toString() + "\n" + Double.toString(this.marketValue) + "\n" + Integer.toString(this.squareFeet) + "\nFlood zone: " + Boolean.toString(this.floodZone) + "\n";
+		return str;
 	}
 	public double calculateTaxes()
 	{

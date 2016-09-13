@@ -6,12 +6,18 @@ public class ResidentialProperty extends Property implements Exemption
 
 	public ResidentialProperty()
 	{
-		super.Property();
+		super.setPropertyAddress(new Address());
+		super.setMarketValue(0.0);
+		super.setSquareFeet(0);
+		super.setFloodZone(false);
 		this.subdivision = Subdivision.NONE;
 	}
 	public ResidentialProperty(Address a, double v, int f, boolean z, Subdivision s)
 	{
-		super.Property(a, v, f, z);
+		super.setPropertyAddress(a);
+		super.setMarketValue(v);
+		super.setSquareFeet(f);
+		super.setFloodZone(z);
 		this.setSubdivision(s);
 	}
 	public Subdivision getSubdivision()
@@ -22,17 +28,18 @@ public class ResidentialProperty extends Property implements Exemption
 	{
 		return this.exemption;
 	}
-	public Void setSubdivision(Subdivision s)
+	public void setSubdivision(Subdivision s)
 	{
 		this.subdivision = s;
 	}
-	public Void setExemption(double a)
+	public void setExemption(double a)
 	{
 		this.exemption = a;
 	}
 	public String toString()
 	{
-		return "";
+		String str = super.toString() + "\n" + subdivision + "\n" + Double.toString(exemption);
+		return str;
 	}
 	public double calculateTaxes()
 	{

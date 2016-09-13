@@ -2,19 +2,20 @@ import java.util.*;
 public class Owner
 {
 	private String name;
-	private List<String> propertyList;
+	private List<Property> propertyList;
 	private double totalTaxes;
 
 	public Owner()
 	{
 		this.name = "";
-		this.propertyList = new ArrayList<String>();
-		this.totalTaxes = 0.0;
+		this.propertyList = new ArrayList<Property>();
+		this.setTotalTaxes(0.0);
 	}
 	public Owner(String n)
 	{
-		this.Owner();
 		this.setName(n);
+		this.propertyList = new ArrayList<Property>();
+		this.setTotalTaxes(0.0);
 	}
 	public String getName()
 	{
@@ -24,23 +25,28 @@ public class Owner
 	{
 		return this.totalTaxes;
 	}
-	public Void setName(String n)
+	public void setName(String n)
 	{
 		this.name = n;
 	}
-	public Void setTotalTaxes(double t)
+	public void setTotalTaxes(double t)
 	{
 		this.totalTaxes = t;
 	}
 	public String toString()
 	{
-		return "";
+		String str = this.name + "\n";
+		for(int i = 0; i < this.propertyList.size(); i++)
+		{
+			str = str + propertyList.get(i).toString() + "\n";
+		}
+		return str;
 	}
-	public Void addProperty(Property p)
+	public void addProperty(Property p)
 	{
 		this.propertyList.add(p);
 	}
-	public ArrayList<Property> getPropertyList()
+	public List<Property> getPropertyList()
 	{
 		return this.propertyList;
 	}

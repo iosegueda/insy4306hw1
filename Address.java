@@ -35,24 +35,25 @@ public class Address
 	{
 		return this.zip;
 	}
-	public Void setStreet(String s)
+	public void setStreet(String s)
 	{
 		this.street = s;
 	}
-	public Void setCity(String c)
+	public void setCity(String c)
 	{
 		this.city = c;
 	}
-	public Void setState(String s)
+	public void setState(String s)
 	{
-		this.static = s;
+		this.state = s;
 	}
-	public Void setZip(int z)
+	public void setZip(int z)
 	{
 		this.zip = z;
 	}
 	public String toString()
 	{
-		return "";
+		String str = this.street + ", " + this.city + ", " + this.state + " " + Integer.toString(this.zip) + "\n";
+		return str;
 	}
 }

@@ -5,13 +5,19 @@ public class CommercialProperty extends Property
 
 	public CommercialProperty()
 	{
-		super.Property();
+		super.setPropertyAddress(new Address());
+		super.setMarketValue(0.0);
+		super.setSquareFeet(0);
+		super.setFloodZone(false);
 		this.setBusinessName("");
 		this.setStateCode("");
 	}
 	public CommercialProperty(Address a, double v, int f, boolean z, String b, String c)
 	{
-		super.Property(a, v, f, z);
+		super.setPropertyAddress(a);
+		super.setMarketValue(v);
+		super.setSquareFeet(f);
+		super.setFloodZone(z);
 		this.setBusinessName(b);
 		this.setStateCode(c);
 	}
@@ -23,17 +29,18 @@ public class CommercialProperty extends Property
 	{
 		return this.stateCode;
 	}
-	public Void setBusinessName(String n)
+	public void setBusinessName(String n)
 	{
 		this.businessName = n;
 	}
-	public Void setStateCode(String c)
+	public void setStateCode(String c)
 	{
 		this.stateCode = c;
 	}
 	public String toString()
 	{
-		return "";
+		String str = super.toString() + "\n" + businessName + "\n" + stateCode;
+		return str;
 	}
 	public double calculateTaxes()
 	{
