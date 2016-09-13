@@ -30,7 +30,7 @@ public class PropertyGUI2 extends JFrame
     private JLabel clickWhenDoneLabel;
     private JButton finishButton;
     
-    public PropertyGUI2(String owners[])
+    public PropertyGUI2(String[] owners)
     {
         super( "Property Input Screen" );
         setLayout(new GridLayout(6,2));
@@ -86,6 +86,18 @@ public class PropertyGUI2 extends JFrame
         add(clickWhenDoneLabel);
         add(finishButton);
     }
+
+    public static int getOwnerPos(java.util.List<Owner> owners, String name)
+    {
+        for(int i = 0; i < owners.size(); i++)
+        {
+            if(name.equals(owners.get(i).getName()))
+            {
+                return i;
+            }
+        }
+        return(-1);
+    }
     
     public static void main(String[] args)
     {
@@ -94,10 +106,14 @@ public class PropertyGUI2 extends JFrame
         -initialize reader 
         -then read 
         */
-        String owners[] = {"NONE"};
+        java.util.List<Owner> owners = new ArrayList<Owner>();
+        java.util.List<String> ownerNames = new ArrayList<String>();
         String properties [];
         String property[] = {};
         String line;
+        String name;
+        boolean nameIsInList = false;
+        int position;
         
         try
         {
@@ -107,7 +123,37 @@ public class PropertyGUI2 extends JFrame
             {
                 System.out.println(line);
                 property = line.split(";");
-                System.out.println(property[1]);
+
+                position = getOwnerPos(owners, property[1]);
+                if(position < 0)
+                {
+                    owners.add(new Owner(property[1]));
+                    position = getOwnerPos(owners, property[1]);
+                    ownerNames.add(property[1]);
+                }
+                if(property[0].equals("Residential"))
+                {
+                    owners.get(position).addProperty(new ResidentialProperty(new Address(property[2], property[3], property[4], Integer.parseInt(property[5])), 
+                                                                        Double.parseDouble(property[6]), 
+                                                                        Integer.parseInt(property[7]), 
+                                                                        Boolean.parseBoolean(property[8]), 
+                                                                        ResidentialProperty.Subdivision.valueOf(property[9])));
+                }
+                else if(property[0].equals("Commercial"))
+                {
+                    owners.get(position).addProperty(new CommercialProperty(new Address(property[2], property[3], property[4], Integer.parseInt(property[5])), 
+                                                                        Double.parseDouble(property[6]), 
+                                                                        Integer.parseInt(property[7]), 
+                                                                        Boolean.parseBoolean(property[8]), 
+                                                                        property[9], 
+                                                                        property[10]));
+                }
+            }
+            
+            System.out.println("\n");
+            for(int i = 0; i < owners.size(); i++)
+            {
+                System.out.println(owners.get(i).toString());
             }
         }
         catch ( IOException ioe )
@@ -118,9 +164,12 @@ public class PropertyGUI2 extends JFrame
         {
             e.printStackTrace();
         }
+
+
+        String[] simpleArray = new String[ ownerNames.size() ];
+        ownerNames.toArray( simpleArray );
         
-        
-        PropertyGUI2 demo = new PropertyGUI2(owners);
+        PropertyGUI2 demo = new PropertyGUI2(simpleArray);
 
         demo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         demo.setSize(500, 300);
