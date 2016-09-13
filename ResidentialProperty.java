@@ -11,6 +11,7 @@ public class ResidentialProperty extends Property implements Exemption
 		super.setSquareFeet(0);
 		super.setFloodZone(false);
 		this.subdivision = Subdivision.NONE;
+		this.setExemption(this.calculateExemption());
 	}
 	public ResidentialProperty(Address a, double v, int f, boolean z, Subdivision s)
 	{
@@ -19,6 +20,7 @@ public class ResidentialProperty extends Property implements Exemption
 		super.setSquareFeet(f);
 		super.setFloodZone(z);
 		this.setSubdivision(s);
+		this.setExemption(this.calculateExemption());
 	}
 	public Subdivision getSubdivision()
 	{
@@ -41,6 +43,7 @@ public class ResidentialProperty extends Property implements Exemption
 		String str = super.toString() + "Subdivision: " + subdivision + "\nExemption: " + Double.toString(exemption);
 		return str;
 	}
+	@Override
 	public double calculateTaxes()
 	{
 		double taxes = super.getMarketValue() * 0.5;

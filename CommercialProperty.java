@@ -42,6 +42,7 @@ public class CommercialProperty extends Property
 		String str = super.toString() + "Business Name: " + businessName + "\nState Code: " + stateCode;
 		return str;
 	}
+	@Override
 	public double calculateTaxes()
 	{
 		double taxes = 0.0;

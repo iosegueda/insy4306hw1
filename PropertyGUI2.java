@@ -29,6 +29,13 @@ public class PropertyGUI2 extends JFrame
     
     private JLabel clickWhenDoneLabel;
     private JButton finishButton;
+
+    int pos = 0;
+    double mktVal = 0.0;
+    double exemptions = 0.0;
+    double totalTaxes = 0.0;
+    double exemption = 0.0;
+    Object item;
     
     public PropertyGUI2(String[] owners, java.util.List<Owner> propertyList)
     {
@@ -43,17 +50,34 @@ public class PropertyGUI2 extends JFrame
             {
                 if (event.getStateChange() == ItemEvent.SELECTED)
                 {
-                    Object item = event.getItem();
-                    System.out.println(item.toString());
-                    int pos = getOwnerPos(propertyList, item.toString());
+                    item = event.getItem();
+                    pos = getOwnerPos(propertyList, item.toString());
 
-                    totalMarketValueField.setText(Double.toString(propertyList.get(pos).getPropertyList().get(0).getMarketValue()));
-
-                    if(propertyList.get(pos).getPropertyList().get(0) instanceof ResidentialProperty)
+                    mktVal = 0.0;
+                    exemptions = 0.0;
+                    totalTaxes = 0.0;
+                    for(int i = 0; i < propertyList.get(pos).getPropertyList().size(); i++)
                     {
-                        System.out.println(((ResidentialProperty)propertyList.get(pos).getPropertyList().get(0)).getExemption());
+                        mktVal += propertyList.get(pos).getPropertyList().get(i).getMarketValue();
+
+                        exemption = 0.0;
+                        if(propertyList.get(pos).getPropertyList().get(i) instanceof ResidentialProperty)
+                        {
+                            exemption = ((ResidentialProperty)propertyList.get(pos).getPropertyList().get(i)).getExemption();
+                        }
+                        exemptions += exemption;
+
+                        totalTaxes += propertyList.get(pos).getPropertyList().get(i).calculateTaxes();
                     }
 
+                    
+
+                    System.out.println(totalTaxes);
+                    totalTaxes = totalTaxes - exemptions;
+                    
+                    totalExemptionsField.setText(Double.toString(exemptions));
+                    totalMarketValueField.setText(Double.toString(mktVal));
+                    totalTaxesField.setText(Double.toString(totalTaxes));
                 }
             }
         }
