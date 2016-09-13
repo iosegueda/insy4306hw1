@@ -37,6 +37,19 @@ public class PropertyGUI2 extends JFrame
         
         selectOwnerLabel = new JLabel("    Select an Owner");
         ownerListBox = new JComboBox<String>(owners);
+        ownerListBox.addItemListener(new ItemListener()
+        {
+            public void itemStateChanged(ItemEvent event)
+            {
+                if (event.getStateChange() == ItemEvent.SELECTED)
+                {
+                    Object item = event.getItem();
+                    System.out.println(item.toString());
+                    // do something with object
+                }
+            }
+        }
+        );
         
         totalMarketValueLabel = new JLabel("    Total Market Value");
         totalMarketValueField = new JTextField(15);
@@ -71,8 +84,7 @@ public class PropertyGUI2 extends JFrame
             }
         }
         );
-        
-        
+
         add(selectOwnerLabel);
         add(ownerListBox);
         add(totalMarketValueLabel);
@@ -101,11 +113,6 @@ public class PropertyGUI2 extends JFrame
     
     public static void main(String[] args)
     {
-        /* 
-        -initialize owners, done
-        -initialize reader 
-        -then read 
-        */
         java.util.List<Owner> owners = new ArrayList<Owner>();
         java.util.List<String> ownerNames = new ArrayList<String>();
         String properties [];
@@ -115,6 +122,8 @@ public class PropertyGUI2 extends JFrame
         boolean nameIsInList = false;
         int position;
         
+        ownerNames.add("NONE");
+
         try
         {
             BufferedReader reader = new BufferedReader(new FileReader("properties.txt"));
@@ -149,7 +158,7 @@ public class PropertyGUI2 extends JFrame
                                                                         property[10]));
                 }
             }
-            
+
             System.out.println("\n");
             for(int i = 0; i < owners.size(); i++)
             {
@@ -172,9 +181,8 @@ public class PropertyGUI2 extends JFrame
         PropertyGUI2 demo = new PropertyGUI2(simpleArray);
 
         demo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        demo.setLocationRelativeTo(null);
         demo.setSize(500, 300);
         demo.setVisible(true);
-        demo.setLocationRelativeTo(null);
     }
-    
 }
