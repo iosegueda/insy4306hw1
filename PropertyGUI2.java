@@ -112,6 +112,13 @@ public class PropertyGUI2 extends JFrame
         {
             public void actionPerformed(ActionEvent ae)
             {
+                String content = "";
+                for(int i = 0; i < propertyList.size(); i++)
+                {
+                    content = content + propertyList.get(i).toString() + "\n";
+                }
+                WriteFile writer = new WriteFile();
+                writer.writeToFile("owners.ser", content);
                 System.exit(0);
             }
         }
