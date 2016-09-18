@@ -25,19 +25,19 @@ public class Address implements Serializable
         this.zip = z;
     }
 
-    public getstreet()
+    public String getstreet()
     {
         return this.street;
     }
-    public getCity()
+    public String getCity()
     {
         return this.city;
     }
-    public getState()
+    public String getState()
     {
         return this.state;
     }
-    public getZip()
+    public int getZip()
     {
         return this.zip;
     }
