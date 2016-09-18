@@ -1,2 +1,7 @@
 *.class
 ~$*
+*.txt
+src/
+*.zip
+.idea/
+*.iml
