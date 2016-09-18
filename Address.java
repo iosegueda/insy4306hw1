@@ -1,9 +1,8 @@
-package com.company;
-import java.io.*;
-
 /**
  * Created by Iris on 9/9/2016.
  */
+import java.io.*;
+
 public class Address implements Serializable
 {
     private String street;
@@ -13,55 +12,54 @@ public class Address implements Serializable
 
     public Address()
     {
-        street = "123 Fake St";
-        city = "Springfield";
-        state = "IL";
-        zip = 90210;
+        this.street = "123 Fake St";
+        this.city = "Springfield";
+        this.state = "IL";
+        this.zip = 90210;
     }
     public Address(String s, String c, String st, int z)
     {
-        street = st;
-        city = c;
-        state = st;
-        zip = z;
-
+        this.street = st;
+        this.city = c;
+        this.state = st;
+        this.zip = z;
     }
 
     public getstreet()
     {
-        return street;
+        return this.street;
     }
     public getCity()
     {
-        return city;
+        return this.city;
     }
     public getState()
     {
-        return state;
+        return this.state;
     }
     public getZip()
     {
-        return zip;
+        return this.zip;
     }
-
-    public void setStreet(String s)
+	public void setStreet(String s)
     {
-        street = s;
+        this.street = s;
     }
     public void setCity(String c)
     {
-        city = c;
+        this.city = c;
     }
     public void setState(String s)
     {
-        state = s;
+        this.state = s;
     }
     public void setZip(int z)
     {
-        zip = z;
+        this.zip = z;
     }
     public String toString()
     {
-        return "    " +street+ "\n    " + city + ", " + state + " " + zip;
+        return "    " +this.street+ "\n    " + this.city + 
+			", " + this.state + " " + this.zip;
     }
 }
