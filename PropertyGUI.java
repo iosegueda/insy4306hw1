@@ -7,7 +7,7 @@ import javax.swing.event.*;
 import java.io.*;
 
 
-public class PropertyGUI2 extends JFrame 
+public class PropertyGUI extends JFrame 
 {
 	private JLabel selectOwnerLabel;
 	private JComboBox<String> ownerListBox;
@@ -30,7 +30,7 @@ public class PropertyGUI2 extends JFrame
 	private JLabel clickWhenDoneLabel;
 	private JButton finishButton;
 	
-	public PropertyGUI2(String owners[])
+	public PropertyGUI(String owners[])
 	{
 		super( "Property Input Screen" );
 		setLayout(new GridLayout(6,2));
@@ -120,7 +120,7 @@ public class PropertyGUI2 extends JFrame
 		}
 		
 		
-		PropertyGUI2 demo = new PropertyGUI2(owners);
+		PropertyGUI demo = new PropertyGUI(owners);
 
         demo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         demo.setSize(500, 300);

@@ -1,3 +1,4 @@
+//Iris Osegueda
 import java.io.*;
 
 public class WriteFile 
