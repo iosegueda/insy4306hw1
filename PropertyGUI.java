@@ -94,7 +94,7 @@ public class PropertyGUI extends JFrame
 		-initialize reader 
 		-then read 
 		*/
-		String owners[] = {"NONE"};
+		String owners[] = {"NONE", "JONES", "SMITH", "WILLIS", "TRAVER", "MERRIT"};
 		String properties [];
 		String property[] = {};
 		String line;

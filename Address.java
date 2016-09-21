@@ -19,7 +19,7 @@ public class Address implements Serializable
     }
     public Address(String s, String c, String st, int z)
     {
-        this.street = st;
+        this.street = s;
         this.city = c;
         this.state = st;
         this.zip = z;
